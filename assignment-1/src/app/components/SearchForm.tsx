@@ -1,25 +1,17 @@
-import React from "react";
+// app/components/SearchForm.tsx
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-interface SearchFormProps {
-  topic: string;
-}
-
-export default function SearchForm({ topic }: SearchFormProps) {
+export default function SearchForm({ topic }: { topic?: string }) {
   return (
-    <form method="GET" className="flex items-center mb-6">
-      <input
+    <form method="GET" className="flex gap-2 mb-6">
+      <Input
         type="text"
         name="topic"
+        placeholder="Enter a topic..."
         defaultValue={topic}
-        placeholder="Enter a topic"
-        className="px-4 py-2 mr-1 border rounded-l-md focus:outline-none"
       />
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700"
-      >
-        Search
-      </button>
+      <Button type="submit">Search</Button>
     </form>
   );
 }

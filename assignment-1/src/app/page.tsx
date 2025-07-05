@@ -21,6 +21,7 @@ export default function Home({ searchParams }: { searchParams: { topic?: string 
       <h1 className="text-3xl font-bold mb-4">Quote Generator</h1>
       <SearchForm topic={topic} />
       <QuoteList quotes={filtered.slice(0, 3)} />
+
     </main>
   );
 }
