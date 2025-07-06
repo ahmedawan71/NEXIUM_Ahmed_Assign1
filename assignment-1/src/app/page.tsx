@@ -2,14 +2,10 @@ import { quotes as allQuotes } from "../../data/quotes";
 import SearchForm from "./components/SearchForm";
 import QuoteList from "./components/QuoteList";
 
-/**
- * Server Component: Home page renders on every request using App Router.
- * It reads `topic` from searchParams, filters quotes, and re-renders.
- */
-export default function Home({ searchParams }: { searchParams: { topic?: string } }) {
-  const topic = searchParams.topic?.trim() || "";
+export default async function Home({ searchParams }: { searchParams: Promise<{ topic?: string }> }) {
+  const resolvedSearchParams = await searchParams;
+  const topic = resolvedSearchParams.topic?.trim() || "";
 
-  // Filter quotes server‑side
   const filtered = topic
     ? allQuotes.filter((q) =>
         q.text.toLowerCase().includes(topic.toLowerCase())
@@ -21,7 +17,6 @@ export default function Home({ searchParams }: { searchParams: { topic?: string 
       <h1 className="text-3xl font-bold mb-4">Quote Generator</h1>
       <SearchForm topic={topic} />
       <QuoteList quotes={filtered.slice(0, 3)} />
-
     </main>
   );
 }
