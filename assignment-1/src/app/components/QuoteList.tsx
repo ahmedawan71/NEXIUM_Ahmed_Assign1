@@ -15,7 +15,7 @@ export default function QuoteList({ quotes }: QuoteListProps) {
       {quotes.map((q) => (
         <div
           key={q.id}
-          className="p-6 bg-card rounded-lg shadow-md animate-fade-in flex justify-between items-start"
+          className="p-6 bg-gradient rounded-lg shadow-md animate-fade-in flex justify-between items-start"
         >
           <blockquote className="text-lg italic text-foreground flex-1">
             “{q.text}”
