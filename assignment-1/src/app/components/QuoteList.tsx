@@ -1,3 +1,4 @@
+// components/QuoteList.tsx
 import React from "react";
 import { Quote } from "../../../data/quotes";
 
@@ -7,14 +8,19 @@ interface QuoteListProps {
 
 export default function QuoteList({ quotes }: QuoteListProps) {
   if (quotes.length === 0) {
-    return <p>No quotes found for this topic.</p>;
+    return <p className="text-muted-foreground">No quotes found for this topic.</p>;
   }
   return (
     <div className="space-y-4">
       {quotes.map((q) => (
-        <blockquote key={q.id} className="p-4 border-l-4 border-blue-600 italic">
-          “{q.text}”
-        </blockquote>
+        <div
+          key={q.id}
+          className="p-6 bg-gradient rounded-lg shadow-md animate-fade-in"
+        >
+          <blockquote className="text-lg italic text-foreground">
+            “{q.text}”
+          </blockquote>
+        </div>
       ))}
     </div>
   );

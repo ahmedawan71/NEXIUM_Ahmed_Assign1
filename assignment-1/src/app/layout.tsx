@@ -1,6 +1,6 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Quote Generator",
@@ -9,22 +9,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <head>
-        <Script id="theme-script" strategy="beforeInteractive">
-          {`
-            (function() {
-              const theme = localStorage.getItem('theme');
-              if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-              } else {
-                document.documentElement.classList.remove('dark');
-              }
-            })();
-          `}
-        </Script>
-      </head>
-      <body className="bg-background text-foreground">
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-gradient-to-b from-background to-muted text-foreground">
         {children}
       </body>
     </html>
