@@ -9,11 +9,8 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    // Get saved theme from localStorage
     const savedTheme = localStorage.getItem("theme");
-    // Validate savedTheme is "light" or "dark"
     const isValidTheme = savedTheme === "light" || savedTheme === "dark";
-    // Determine initial theme: savedTheme (if valid), prefers-color-scheme, or "light"
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const initialTheme: "light" | "dark" = isValidTheme ? savedTheme : prefersDark ? "dark" : "light";
     
